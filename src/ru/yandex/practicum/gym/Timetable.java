@@ -11,7 +11,7 @@ public class Timetable {
     public Timetable() {
         this.timetable = new HashMap<>();
         this.coachCounters = new HashMap<>();
-        for (DayOfWeek day : DayOfWeek.values()){
+        for (DayOfWeek day : DayOfWeek.values()) {
             timetable.put(day,new TreeMap<TimeOfDay,TreeSet<TrainingSession>>());
         }
     }
@@ -26,7 +26,7 @@ public class Timetable {
         //Получим ссылку на список занятий за день
         TreeMap<TimeOfDay,TreeSet<TrainingSession>> trainingsPerDay = timetable.get(day);
         //Если есть запись за время, получаем, список тренировок
-        if (trainingsPerDay.containsKey(time)){
+        if (trainingsPerDay.containsKey(time)) {
             trainingSessions = trainingsPerDay.get(time);
             //Добавили тренировку в список
             trainingSessions.add(trainingSession);
@@ -36,7 +36,7 @@ public class Timetable {
             trainingsPerDay.put(time,trainingSessions);
         }
         //Работа с счетчиком
-        if (coachCounters.containsKey(coach)){
+        if (coachCounters.containsKey(coach)) {
             coachCounters.get(coach).incCount();
         } else {
             CounterOfTrainings counterOfTrainings = new CounterOfTrainings(coach);
@@ -49,7 +49,7 @@ public class Timetable {
         //как реализовать, тоже непонятно, но сложность должна быть О(1)
         TreeMap<TimeOfDay,TreeSet<TrainingSession>> trainsPerDay = timetable.get(dayOfWeek);
         TreeSet<TrainingSession> result = new TreeSet<>();
-        for (TimeOfDay time : trainsPerDay.navigableKeySet()){
+        for (TimeOfDay time : trainsPerDay.navigableKeySet()) {
             result.addAll(trainsPerDay.get(time));
         }
         return  result;
@@ -60,9 +60,9 @@ public class Timetable {
         return timetable.get(dayOfWeek).get(timeOfDay) == null ? new TreeSet<>() : timetable.get(dayOfWeek).get(timeOfDay);
     }
 
-    public TreeSet<CounterOfTrainings> getCountByCoaches(){
+    public TreeSet<CounterOfTrainings> getCountByCoaches() {
         TreeSet<CounterOfTrainings> result = new TreeSet<>();
-        for (CounterOfTrainings counter : coachCounters.values()){
+        for (CounterOfTrainings counter : coachCounters.values()) {
             result.add(counter);
         }
         return result;
