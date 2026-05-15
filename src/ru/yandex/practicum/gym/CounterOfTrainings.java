@@ -26,7 +26,7 @@ public class CounterOfTrainings implements Comparable<CounterOfTrainings> {
         return count;
     }
 
-    public void incCount(){
+    public void incCount() {
         this.count++;
     }
 
