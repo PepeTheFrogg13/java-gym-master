@@ -35,7 +35,7 @@ public class Timetable {
             trainingSessions.add(trainingSession);
             trainingsPerDay.put(time,trainingSessions);
         }
-        //Работа с счетчиком
+        //Работа со счетчиком
         if (coachCounters.containsKey(coach)) {
             coachCounters.get(coach).incCount();
         } else {
@@ -57,7 +57,9 @@ public class Timetable {
 
     public TreeSet<TrainingSession> getTrainingSessionsForDayAndTime(DayOfWeek dayOfWeek, TimeOfDay timeOfDay) {
         //как реализовать, тоже непонятно, но сложность должна быть О(1)
-        return timetable.get(dayOfWeek).get(timeOfDay) == null ? new TreeSet<>() : timetable.get(dayOfWeek).get(timeOfDay);
+        TreeSet<TrainingSession> result = new TreeSet<>();
+        result.addAll(timetable.get(dayOfWeek).get(timeOfDay) == null ? new TreeSet<>() : timetable.get(dayOfWeek).get(timeOfDay));
+        return result;
     }
 
     public TreeSet<CounterOfTrainings> getCountByCoaches() {

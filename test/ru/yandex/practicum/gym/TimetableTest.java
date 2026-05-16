@@ -14,14 +14,14 @@ public class TimetableTest {
 
     @BeforeEach
     void beforeEach(){
-        Comparator<TrainingSession> tsComparator = new Comparator<>() {
+         tsComparator = new Comparator<>() {
             @Override
             public int compare(TrainingSession ts1, TrainingSession ts2) {
                 return ts1.getTimeOfDay().compareTo(ts2.getTimeOfDay());
             }
         };
 
-        Comparator<CounterOfTrainings> ctComparator = new Comparator<>() {
+        ctComparator = new Comparator<>() {
             @Override
             public int compare(CounterOfTrainings ct1, CounterOfTrainings ct2) {
                 return -ct1.getCount().compareTo(ct2.getCount());

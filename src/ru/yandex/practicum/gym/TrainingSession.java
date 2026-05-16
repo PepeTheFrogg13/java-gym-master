@@ -1,5 +1,6 @@
 package ru.yandex.practicum.gym;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class TrainingSession implements Comparable<TrainingSession> {
@@ -38,7 +39,14 @@ public class TrainingSession implements Comparable<TrainingSession> {
 
     @Override
     public int compareTo(TrainingSession o) {
-        return this.timeOfDay.compareTo(o.timeOfDay);
+
+        int i = this.dayOfWeek.compareTo(o.dayOfWeek);
+
+        if (i != 0) return i;
+
+        i = this.timeOfDay.compareTo(o.timeOfDay);
+        return i;
+
     }
 
     @Override
